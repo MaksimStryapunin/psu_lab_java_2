@@ -6,6 +6,7 @@ import java.util.Random;
 public class filling {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
+
     public int[] fill_arrow(){
         int choose1 = 0;
         int[] arr = null;

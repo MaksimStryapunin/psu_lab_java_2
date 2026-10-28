@@ -1,0 +1,5 @@
+package sup;
+
+class inputvalidator {
+
+}
