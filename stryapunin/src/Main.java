@@ -3,7 +3,7 @@ import java.util.function.*;
 
 public class Main {
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 //        methoods methoods = new methoods();
 //        System.out.println("-----------------------------------------------------------------------------------------");
 //        System.out.println("Выберите задание(1/2/3/4)");
