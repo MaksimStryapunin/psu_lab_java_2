@@ -1,8 +1,16 @@
 import java.util.*;
 import java.util.function.*;
+
+import sup.*;
 import tasks.*;
 
 public class Main {
+//======================================================================================================================
+    final String[][] tasks= new String[][]{
+        {"2","3"},{"4"},{"4"},{"5"},{"1"}
+    };
+    final int count_tasks = tasks.length;
+//======================================================================================================================
     private static void sup(String x){
         switch(x) {
             case "-": {
@@ -15,39 +23,24 @@ public class Main {
             }
         }
     }
-    private static void sup(String x, List<String> arr){
-        switch(x) {
-            case "z1": {
-                System.out.println("Выберите задание(");
-                for (String i : arr) {
-                    System.out.println(i+"/");
-                }
-                System.out.println(")");
-                System.out.print(": ");
-                break;
-            }
-            case "z2": {
-                System.out.println("Выберите задачу(");
-                for (String i : arr) {
-                    System.out.println(i+"/");
-                }
-                System.out.println(")");
-                System.out.print(": ");
-                break;
-            }
-        }
-    }
     public static void main(String[] args) {
+        Main main = new Main();
         Scanner scanner = new Scanner(System.in);
+        inputvalidator validator = new inputvalidator();
+
         sup("-");
-        sup("z1", {"1","2","3","4","5"});
-        String choose_task = scanner.next();
+        System.out.print("Выберите Задание: ");
+        for (int i = 0; i < main.count_tasks; i++){
+            System.out.print(i + 1);
+            if (main.count_tasks != i) System.out.print("/");
+        }
+        System.out.print(":\n");
+        /**String choose_task = scanner.next();
         String switch_choose;
         switch (choose_task) {
-            case null: break;
             case "1": {
                 sup("-");
-                sup("z2", {"3","2"});
+                sup("z2", new String[]("3", "2"));
                 switch_choose = scanner.next();
                 switch (switch_choose) {
                     case "2": {
@@ -96,6 +89,6 @@ public class Main {
             }
             default:{ sup("err");
                 break;}
-        }
+        }*/
     }
 }

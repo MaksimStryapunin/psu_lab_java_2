@@ -1,5 +1,5 @@
 package sup;
 
-class inputvalidator {
+public class inputvalidator {
 
 }
