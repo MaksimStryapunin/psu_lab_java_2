@@ -1,31 +1,31 @@
 package sup;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public final class inputvalidator {
-    private final  Scanner scanner;
+    private final Scanner scanner;
 
-    public static int nextInt(int x) {
+    public inputvalidator(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public int readInt(String prompt) {
         while (true) {
-            System.out.print(x + ": ");
-            String input = scanner.nextLine().trim();
-            try {
-                return Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                System.err.println(" ");
+            System.out.print(prompt + ": ");
+            if (scanner.hasNextInt()) {
+                int num = scanner.nextInt();
+                scanner.nextLine();
+                return num;
             }
+            scanner.nextLine();
+            System.err.println("Нецелое число");
         }
     }
-    public static int nextLine(int x) {
+    public String readLine(String prompt) {
         while (true) {
-            System.out.print(x + ": ");
-            String input = scanner.nextLine().trim();
-            try {
-                return Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                System.err.println(" ");
-            }
+            System.out.print(prompt + ": ");
+            String text = scanner.nextLine().trim();
+            if (!text.isEmpty()) return text;
+            System.err.println("Пусатая строка");
         }
     }
 

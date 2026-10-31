@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 import sup.*;
 import tasks.*;
@@ -23,7 +24,8 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        inputvalidator scanner = new inputvalidator();
+        Scanner scanner = new Scanner(System.in);
+        inputvalidator valid = new inputvalidator(scanner);
         Main main = new Main();
         sup("-");
         System.out.print("Выберите Задание: ");
@@ -32,6 +34,7 @@ public class Main {
             if (main.count_tasks != i) System.out.print("/");
         }
         System.out.print(":\n");
+
         /**String choose_task = scanner.next();
         String switch_choose;
         switch (choose_task) {
