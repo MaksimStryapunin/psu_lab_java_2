@@ -1,7 +1,7 @@
 package tasks;
 
-import sup.filling;
-import java.util.Scanner;
+import sup.*;
+import java.util.*;
 
 public interface sub_task {
     filling  fill = new filling();

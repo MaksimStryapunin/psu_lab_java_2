@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.function.*;
 
 import sup.*;
 import tasks.*;
@@ -24,10 +23,8 @@ public class Main {
         }
     }
     public static void main(String[] args) {
+        inputvalidator scanner = new inputvalidator();
         Main main = new Main();
-        Scanner scanner = new Scanner(System.in);
-        inputvalidator validator = new inputvalidator();
-
         sup("-");
         System.out.print("Выберите Задание: ");
         for (int i = 0; i < main.count_tasks; i++){
