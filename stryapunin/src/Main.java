@@ -17,15 +17,27 @@ public class Main {
                 System.out.println("====================================================================================");
                 break;
             }
-            case "err": {
-                System.err.println("Нет задачи в задании");
-                break;
+            case "1":{
+
+            }
+            case "2": {
+
+            }
+            case "q","quit","в","выход","ds[jl","d","йгше","й":{
+
+            }
+            case "r","restart","з","заново","куыефке","к":{
+
             }
         }
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         inputvalidator valid = new inputvalidator(scanner);
+        sup("-");
+        System.out.print("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход");
+
+
         sup("-");
         System.out.print("Выберите Задание: ");
         for (int i = 0; i < count_tasks; i++){
@@ -34,60 +46,5 @@ public class Main {
         }
         System.out.print(":\n");
 
-        /**String choose_task = scanner.next();static
-        String switch_choose;
-        switch (choose_task) {
-            case "1": {
-                sup("-");
-                sup("z2", new String[]("3", "2"));
-                switch_choose = scanner.next();
-                switch (switch_choose) {
-                    case "2": {
-                        //System.out.println(task1_2.);
-                        sup("-");
-                        break;
-                    }
-                    case "3": {
-                        //System.out.println(task1_3.);
-                        sup("-");
-                        break;
-                    }
-                    default: {
-                        sup("err");
-                    }
-                }
-                break;
-            }
-            case "2": {
-                sup("-");
-                sup("z2", {"4"});
-                //System.out.println(task2_4.);
-                sup("-");
-                break;
-            }
-            case "3": {
-                sup("-");
-                sup("z2", {"4"});
-                //System.out.println(task3_4.);
-                sup("-");
-                break;
-            }
-            case "4": {
-                sup("-");
-                sup("z2", {"5"});
-                //System.out.println(task4_5.);
-                sup("-");
-                break;
-            }
-            case "5": {
-                sup("-");
-                sup("z2", {"1"});;
-                //System.out.println(task5_1.);
-                sup("-");
-                break;
-            }
-            default:{ sup("err");
-                break;}
-        }*/
     }
 }
