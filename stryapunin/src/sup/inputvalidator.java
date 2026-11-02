@@ -16,7 +16,7 @@ public final class inputvalidator {
                 return num;
             }
             scanner.nextLine();
-            System.err.println("Нецелое число");
+            System.err.println("Нецелое число!\n");
         }
     }
     public int readInt(String title) {
@@ -28,7 +28,7 @@ public final class inputvalidator {
                 return num;
             }
             scanner.nextLine();
-            System.err.println("Нецелое число");
+            System.err.println("Нецелое число!\n");
         }
     }
     public int readInt(int min, int max) {
@@ -38,7 +38,7 @@ public final class inputvalidator {
         while (true) {
             int num = readInt();
             if (num >= min && num <= max) return num;
-            else System.err.println("Некорректное число!");
+            else System.err.println("Некорректное число!\n");
         }
     }
     public int readInt(String title, int min, int max) {
@@ -48,7 +48,7 @@ public final class inputvalidator {
         while (true) {
             int num = readInt(title);
             if (num >= min && num <= max) return num;
-            else System.err.println("Некорректное число!");
+            else System.err.println("Некорректное число!\n");
         }
     }
     public int readInt(int[] predicate) {
@@ -57,7 +57,7 @@ public final class inputvalidator {
             for (int i : predicate) {
                 if (num == i) return num;
             }
-            System.err.println("Некорректное число!");
+            System.err.println("Некорректное число!\n");
         }
     }
     public int readInt(String title, int[] predicate) {
@@ -66,7 +66,7 @@ public final class inputvalidator {
             for (int i : predicate) {
                 if (num == i) return num;
             }
-            System.err.println("Некорректное число!");
+            System.err.println("Некорректное число!\n");
         }
     }
 /**===================================================================================================================*/
@@ -74,7 +74,7 @@ public final class inputvalidator {
         while (true) {
             String text = scanner.nextLine().trim();
             if (!text.isEmpty()) return text;
-            System.err.println("Пусатая строка!");
+            System.err.println("Пусатая строка!\n");
         }
     }
     public String readLine(String title) {
@@ -82,25 +82,25 @@ public final class inputvalidator {
             System.out.print(title + ": ");
             String text = scanner.nextLine().trim();
             if (!text.isEmpty()) return text;
-            System.err.println("Пусатая строка!");
+            System.err.println("Пусатая строка!\n");
         }
     }
-    public String readline(String[] predicate) {
+    public String readLine(String[] predicate) {
         while (true) {
             String text = readLine();
             for (String i : predicate) {
-                if (text == i) return text;
+                if (text.equals(i)) return text;
             }
-            System.err.println("Некорректное число!");
+            System.err.println("Некорректное число!\n");
         }
     }
-    public String readline(String title, String[] predicate) {
+    public String readLine(String title, String[] predicate) {
         while (true) {
             String text = readLine(title);
             for (String i : predicate) {
-                if (text == i) return text;
+                if (text.equals(i)) return text;
             }
-            System.err.println("Некорректное число!");
+            System.err.println("Некорректное число!\n");
         }
     }
 }

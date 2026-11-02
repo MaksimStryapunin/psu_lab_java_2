@@ -32,14 +32,14 @@ public class Main {
         String[] pre = {"1","2","q","quit","в","выход","ds[jl","d","йгше","й"};
         String[] restart = {"r","restart","з","заново","куыефке","к"};
         sup("-");
-        String methood_choice = valid.readLine("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход", pre);
+        String methood_choice = valid.readLine("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход\n", pre);
         sup("-");
         if (methood_choice == "1") {
             cascade();
         } else if (methood_choice == "2") {
             debug();
         } else {
-            System.out.println("Выход.");
+            System.exit(0);
         }
 
     }
@@ -49,7 +49,7 @@ public class Main {
 
         int z1 = valid.readInt("Задание:\n", 1, count_tasks);
         String[] taskNumbers = tasks[z1 - 1];
-        String z2 = valid.readline("Задача:\n", taskNumbers);
+        String z2 = valid.readLine("Задача:\n", taskNumbers);
         int taskNum = Integer.parseInt(z2);
         switch (taskNum) {
             case 1: System.out.println("Задача 1"); break;
@@ -57,7 +57,7 @@ public class Main {
             case 3: System.out.println("Задача 3"); break;
             case 4: System.out.println("Задача 4"); break;
             case 5: System.out.println("Задача 5"); break;
-            default: System.err.println("Нет такой задачи!");
+            default:{ System.err.println("Нет такой задачи!");debug(); break;}
         }
 
     }
@@ -85,7 +85,7 @@ public class Main {
                         System.out.println("Выполняется задача 5");
                         break;
                     default:
-                        System.out.println("Неизвестная задача: " + taskNum);
+                        System.err.println("Ошибка! значение"+taskNum);
                 }
             }
         }
