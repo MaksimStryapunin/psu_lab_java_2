@@ -23,10 +23,10 @@ public class Main {
             case "2": {
 
             }
-            case "q","quit","в","выход","ds[jl","d","йгше","й":{
+            case "q":{
 
             }
-            case "r","restart","з","заново","куыефке","к":{
+            case "r":{
 
             }
         }
@@ -34,10 +34,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         inputvalidator valid = new inputvalidator(scanner);
+        String[] pre = {"q","quit","в","выход","ds[jl","d","йгше","й","r","restart","з","заново","куыефке","к"};
         sup("-");
-        System.out.print("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход");
-
-
+        String methood_choice = valid.readLine("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход", pre);
+        System.clear;
         sup("-");
         System.out.print("Выберите Задание: ");
         for (int i = 0; i < count_tasks; i++){
