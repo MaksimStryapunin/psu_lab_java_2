@@ -17,12 +17,6 @@ public class Main {
                 System.out.println("====================================================================================");
                 break;
             }
-            case "1":{
-
-            }
-            case "2": {
-
-            }
             case "q":{
 
             }
@@ -34,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         inputvalidator valid = new inputvalidator(scanner);
-        String[] pre = {"q","quit","в","выход","ds[jl","d","йгше","й","r","restart","з","заново","куыефке","к"};
+        String[] pre = {"1","2","q","quit","в","выход","ds[jl","d","йгше","й","r","restart","з","заново","куыефке","к"};
         sup("-");
         String methood_choice = valid.readLine("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход", pre);
         System.clear;
@@ -45,6 +39,22 @@ public class Main {
             if (i < count_tasks - 1) System.out.print("/");
         }
         System.out.print(":\n");
+
+    }
+    private static void debug() {
+        Scanner scanner = new Scanner(System.in);
+        inputvalidator valid = new inputvalidator(scanner);
+        int z1 = valid.readInt("Задание:\n", 1, count_tasks-1);
+        String z2 = valid.readLine("Задача:\n", tasks[z1]);
+
+    }
+    private static void cascade() {
+        for (int i = 0; i < count_tasks; i++) {
+            System.out.println("\n============= Задание " + (i + 1) + " =============");
+            for (int j = 0; j < tasks[i].length; j++) {
+
+            }
+        }
 
     }
 }
