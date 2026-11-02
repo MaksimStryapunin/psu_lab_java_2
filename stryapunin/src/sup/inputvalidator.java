@@ -54,15 +54,19 @@ public final class inputvalidator {
     public int readInt(int[] predicate) {
         while (true) {
             int num = readInt();
-            if (num in predicate) return num;
-            else System.err.println("Некорректное число!");
+            for (int i : predicate) {
+                if (num == i) return num;
+            }
+            System.err.println("Некорректное число!");
         }
     }
     public int readInt(String title, int[] predicate) {
         while (true) {
             int num = readInt(title);
-            if (num in predicate) return num;
-            else System.err.println("Некорректное число!");
+            for (int i : predicate) {
+                if (num == i) return num;
+            }
+            System.err.println("Некорректное число!");
         }
     }
 /**===================================================================================================================*/
@@ -73,7 +77,6 @@ public final class inputvalidator {
             System.err.println("Пусатая строка!");
         }
     }
-
     public String readLine(String title) {
         while (true) {
             System.out.print(title + ": ");
@@ -84,16 +87,20 @@ public final class inputvalidator {
     }
     public String readline(String[] predicate) {
         while (true) {
-            int text = readInt();
-            if (text in predicate) return text;
-            else System.err.println("Некорректное значение!");
+            String text = readLine();
+            for (String i : predicate) {
+                if (text == i) return text;
+            }
+            System.err.println("Некорректное число!");
         }
     }
     public String readline(String title, String[] predicate) {
         while (true) {
-            int text = readInt(title);
-            if (text in predicate) return text;
-            else System.err.println("Некорректное значение!");
+            String text = readLine(title);
+            for (String i : predicate) {
+                if (text == i) return text;
+            }
+            System.err.println("Некорректное число!");
         }
     }
 }
