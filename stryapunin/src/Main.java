@@ -6,10 +6,10 @@ import tasks.*;
 
 public class Main {
 //======================================================================================================================
-    final String[][] tasks= new String[][]{
+    static final String[][] tasks= new String[][]{
         {"2","3"},{"4"},{"4"},{"5"},{"1"}
     };
-    final int count_tasks = tasks.length;
+    static final int count_tasks = tasks.length;
 //======================================================================================================================
     private static void sup(String x){
         switch(x) {
@@ -26,16 +26,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         inputvalidator valid = new inputvalidator(scanner);
-        Main main = new Main();
         sup("-");
         System.out.print("Выберите Задание: ");
-        for (int i = 0; i < main.count_tasks; i++){
+        for (int i = 0; i < count_tasks; i++){
             System.out.print(i + 1);
-            if (main.count_tasks != i) System.out.print("/");
+            if (i < count_tasks - 1) System.out.print("/");
         }
         System.out.print(":\n");
 
-        /**String choose_task = scanner.next();
+        /**String choose_task = scanner.next();static
         String switch_choose;
         switch (choose_task) {
             case "1": {

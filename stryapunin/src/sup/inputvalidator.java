@@ -8,9 +8,9 @@ public final class inputvalidator {
     public inputvalidator(Scanner scanner) {
         this.scanner = scanner;
     }
-    public int readInt(String prompt) {
+    public int readInt(String title) {
         while (true) {
-            System.out.print(prompt + ": ");
+            System.out.print(title + ": ");
             if (scanner.hasNextInt()) {
                 int num = scanner.nextInt();
                 scanner.nextLine();
