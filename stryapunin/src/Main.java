@@ -5,40 +5,20 @@ import sup.*;
 import tasks.*;
 
 public class Main {
-//======================================================================================================================
-    static final String[][] tasks= new String[][]{
-        {"2","3"},{"4"},{"4"},{"5"},{"1"}
+    //======================================================================================================================
+    static final String[][] tasks = new String[][]{
+            {"2", "3"}, {"4"}, {"4"}, {"5"}, {"1"}
     };
+    //======================================================================================================================
     static final int count_tasks = tasks.length;
-//======================================================================================================================
-    private static void sup(String x){
-        switch(x) {
-            case "-": {
-                System.out.println("====================================================================================");
-                break;
-            }
-            case "q":{
+    static Scanner scanner = new Scanner(System.in);
+    static inputvalidator valid = new inputvalidator(scanner);
 
-                break;
-            }
-            case "r":{
-
-                break;
-            }
-            default:{
-                break;
-            }
-        }
-    }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        inputvalidator valid = new inputvalidator(scanner);
-
-        String[] pre = {"1","2","q","quit","в","выход","ds[jl","d","йгше","й"};
-        String[] restart = {"r","restart","з","заново","куыефке","к"};
-        sup("-");
+        String[] pre = {"1", "2", "q", "quit", "в", "выход", "ds[jl", "d", "йгше", "й"};
+        System.out.println("====================================================================================");
         String methood_choice = valid.readLine("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход\n", pre);
-        sup("-");
+        System.out.println("====================================================================================");
         if (methood_choice.equals("1")) {
             cascade();
         } else if (methood_choice.equals("2")) {
@@ -48,35 +28,59 @@ public class Main {
         }
 
     }
-    private static void debug() {
-        task1_3 t1_3 = new task1_3();
-        task1_2 t1_2 = new task1_2();
-        task2_4 t2_4 = new task2_4();
-        task3_4 t3_4 = new task3_4();
-        task4_5 t4_5 = new task4_5();
-        task5_1 t5_1 = new task5_1();
-        Scanner scanner = new Scanner(System.in);
-        inputvalidator valid = new inputvalidator(scanner);
 
+    private static void debug() {
+        task1_3 task13 = new task1_3();
+        task1_2 task12 = new task1_2();
+        task2_4 task24 = new task2_4();
+        task3_4 task34 = new task3_4();
+        task4_5 task45 = new task4_5();
+        task5_1 task51 = new task5_1();
         int z1 = valid.readInt("Задание:\n", 1, count_tasks);
         String[] taskNumbers = tasks[z1 - 1];
-        String z2 = valid.readLine("Задача:\n", taskNumbers);
-
-    }
-    private static void cascade() {
-        task1_3 t1_3 = new task1_3();
-        task1_2 t1_2 = new task1_2();
-        task2_4 t2_4 = new task2_4();
-        task3_4 t3_4 = new task3_4();
-        task4_5 t4_5 = new task4_5();
-        task5_1 t5_1 = new task5_1();
-        for (int i = 0; i < count_tasks; i++) {
-            System.out.println("\n============= Задание " + (i + 1) + " =============");
-            for (int j = 0; j < tasks[i].length; j++) {
-                String tasktemp = tasks[i][j];
-                System.out.println("--- Задача " + tasktemp + " ---");
-
+        switch (z1) {
+            case 1: {
+                String z2 = valid.readLine("Задача:\n", taskNumbers);
+                switch (z2) {
+                    case "3": {task13.show_task(); break;}
+                    case "2": {task12.show_task(); break;}
+                }
+                break;
             }
+            case 2: {task24.show_task(); break;}
+            case 3: {task34.show_task(); break;}
+            case 4: {task45.show_task(); break;}
+            case 5: {task51.show_task(); break;}
         }
+    }
+
+    private static void cascade() {
+        List<sub_task> taskList = List.of(
+                new task1_3(),
+                new task1_2(),
+                new task2_4(),
+                new task3_4(),
+                new task4_5(),
+                new task5_1()
+        );
+        int i = 0;
+        while (i < taskList.size()) {
+            sub_task currentTask = taskList.get(i);
+            System.out.println("\n============= Задача " + (i + 1) + " =============");
+            currentTask.show_task();
+            System.out.println("\n'r'-restart\n'q' - выход\n'Enter' - далее");
+            String input = valid.readLine().toLowerCase();
+            if (input.equals("q") || input.equals("quit") || input.equals("exit")) {
+                System.out.println("Каскад прерван пользователем.");
+                return;
+            }
+            if (isRestart(input)) {
+                continue;
+            }
+            i++;
+        }
+    }
+    private static boolean isRestart(String input) {
+        return input.equals("r") || input.equals("restart") || input.equals("заново") || input.equals("повтор") || input.equals("repeat") || input.equals("again");
     }
 }
