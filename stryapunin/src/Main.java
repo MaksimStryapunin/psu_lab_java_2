@@ -18,9 +18,14 @@ public class Main {
                 break;
             }
             case "q":{
+
                 break;
             }
             case "r":{
+
+                break;
+            }
+            default:{
                 break;
             }
         }
@@ -34,9 +39,9 @@ public class Main {
         sup("-");
         String methood_choice = valid.readLine("Выберите вариант запуска (1/2/q)\n1-сдача\n2-отладка\nq,quit,в,выход\n", pre);
         sup("-");
-        if (methood_choice == "1") {
+        if (methood_choice.equals("1")) {
             cascade();
-        } else if (methood_choice == "2") {
+        } else if (methood_choice.equals("2")) {
             debug();
         } else {
             System.exit(0);
@@ -44,49 +49,33 @@ public class Main {
 
     }
     private static void debug() {
+        task1_3 t1_3 = new task1_3();
+        task1_2 t1_2 = new task1_2();
+        task2_4 t2_4 = new task2_4();
+        task3_4 t3_4 = new task3_4();
+        task4_5 t4_5 = new task4_5();
+        task5_1 t5_1 = new task5_1();
         Scanner scanner = new Scanner(System.in);
         inputvalidator valid = new inputvalidator(scanner);
 
         int z1 = valid.readInt("Задание:\n", 1, count_tasks);
         String[] taskNumbers = tasks[z1 - 1];
         String z2 = valid.readLine("Задача:\n", taskNumbers);
-        int taskNum = Integer.parseInt(z2);
-        switch (taskNum) {
-            case 1: System.out.println("Задача 1"); break;
-            case 2: System.out.println("Задача 2"); break;
-            case 3: System.out.println("Задача 3"); break;
-            case 4: System.out.println("Задача 4"); break;
-            case 5: System.out.println("Задача 5"); break;
-            default:{ System.err.println("Нет такой задачи!");debug(); break;}
-        }
 
     }
     private static void cascade() {
+        task1_3 t1_3 = new task1_3();
+        task1_2 t1_2 = new task1_2();
+        task2_4 t2_4 = new task2_4();
+        task3_4 t3_4 = new task3_4();
+        task4_5 t4_5 = new task4_5();
+        task5_1 t5_1 = new task5_1();
         for (int i = 0; i < count_tasks; i++) {
             System.out.println("\n============= Задание " + (i + 1) + " =============");
             for (int j = 0; j < tasks[i].length; j++) {
-                String taskNumStr = tasks[i][j];
-                int taskNum = Integer.parseInt(taskNumStr);
-                System.out.println("--- Задача " + taskNum + " ---");
-                switch (taskNum) {
-                    case 1:
-                        System.out.println("Выполняется задача 1");
-                        break;
-                    case 2:
-                        System.out.println("Выполняется задача 2");
-                        break;
-                    case 3:
-                        System.out.println("Выполняется задача 3");
-                        break;
-                    case 4:
-                        System.out.println("Выполняется задача 4");
-                        break;
-                    case 5:
-                        System.out.println("Выполняется задача 5");
-                        break;
-                    default:
-                        System.err.println("Ошибка! значение"+taskNum);
-                }
+                String tasktemp = tasks[i][j];
+                System.out.println("--- Задача " + tasktemp + " ---");
+
             }
         }
     }
