@@ -46,6 +46,11 @@ public class task1_3 implements sub_task {
         System.out.println(name2.toString());
         System.out.println(name3.toString());
     }
+
+    @Override
+    public void add_new() {
+
+    }
 }
 // Имена. Создайте сущность Имя, которая описывается тремя параметрами: Фамилия, Личное имя, Отчество.
 // Имя может быть приведено к строковому виду, включающему традиционное представление всех трех параметров:

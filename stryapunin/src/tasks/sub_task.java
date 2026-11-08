@@ -8,7 +8,6 @@ public interface sub_task {
     Scanner scanner = new Scanner(System.in);
     inputvalidator valid = new inputvalidator(scanner);
 
-    public default void show_task(){
-
-    }
+    public default void show_task(){}
+    public default void add_new(){}
 }

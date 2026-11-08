@@ -26,7 +26,6 @@ public class Main {
         } else {
             System.exit(0);
         }
-
     }
 
     private static void debug() {
@@ -67,11 +66,15 @@ public class Main {
         while (i < taskList.size()) {
             sub_task currentTask = taskList.get(i);
             System.out.println("\n============= Задача " + (i + 1) + " =============");
+            int menu = valid.readInt("");
             currentTask.show_task();
+
             System.out.println("\n'r'-restart\n'q' - выход\n'Enter' - далее");
             String input = valid.readLine().toLowerCase();
-            if (input.equals("q") || input.equals("quit") || input.equals("exit")) {
-                System.out.println("Каскад прерван пользователем.");
+            if (isAdd(input)) {
+                currentTask.add_new();
+            }
+            if (isQuit(input)) {
                 return;
             }
             if (isRestart(input)) {
@@ -82,5 +85,11 @@ public class Main {
     }
     private static boolean isRestart(String input) {
         return input.equals("r") || input.equals("restart") || input.equals("заново") || input.equals("повтор") || input.equals("repeat") || input.equals("again");
+    }
+    private static boolean isAdd(String input) {
+        return input.equals("a") || input.equals("add");
+    }
+    private static boolean isQuit(String input) {
+        return input.equals("q") || input.equals("quit") || input.equals("выход");
     }
 }
