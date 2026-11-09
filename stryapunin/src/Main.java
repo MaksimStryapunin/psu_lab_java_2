@@ -80,20 +80,23 @@ public class Main {
                 new task4_5(),
                 new task5_1()
         );
+        ArrayList<String> arr_task = new ArrayList<>();
+        for (String[] i1 : tasks){
+            for (String i2 : i1){
+                arr_task.add(i2);
+            }
+        }
         int i = 0;
         while (i < taskList.size()) {
             sub_task currentTask = taskList.get(i);
-            System.out.println("\n============= Задача " + (i + 1) + " =============");
+            System.out.println("\n============= Задание " + (i + 1) + " =============");
+            System.out.println("\n============= Задача " + arr_task[i] + " =============");
             currentTask.show_task();
-            final String[] pre = {"", "q", "quit", "exit", "в", "выход",
-                    "r", "restart", "заново", "повтор", "repeat", "again",
-                    "a", "add", "добавить"
-            };
             boolean restart = false;
             boolean quit = false;
             while (true) {
                 System.out.println("\n'r'-restart\n'q' - выход\n'Enter' - далее\nadd - Добавить элемент");
-                String input = valid.readLine(pre).toLowerCase();
+                String input = sub_task.scanner.nextLine().trim().toLowerCase();
                 if (input.isEmpty()) break;
                 if (isAdd(input)) {
                     currentTask.add_new();

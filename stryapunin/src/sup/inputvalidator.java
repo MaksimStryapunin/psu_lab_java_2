@@ -91,7 +91,7 @@ public final class inputvalidator {
             for (String i : predicate) {
                 if (text.equals(i)) return text;
             }
-            System.err.println("Некорректное число!\n");
+            System.err.println("Некорректное значение!\n");
         }
     }
     public String readLine(String title, String[] predicate) {
@@ -100,7 +100,7 @@ public final class inputvalidator {
             for (String i : predicate) {
                 if (text.equals(i)) return text;
             }
-            System.err.println("Некорректное число!\n");
+            System.err.println("Некорректное значение!\n");
         }
     }
 }

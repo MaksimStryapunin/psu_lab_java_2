@@ -66,11 +66,11 @@ public class task1_3 implements sub_task {
     @Override
     public void add_new() {
         System.out.print("Фамилия: ");
-        String surname = sub_task.valid.readLine();
+        String surname = sub_task.scanner.nextLine().trim();
         System.out.print("Личное имя: ");
-        String firstName = sub_task.valid.readLine();
+        String firstName = sub_task.scanner.nextLine().trim();
         System.out.print("Отчество: ");
-        String patronymic = sub_task.valid.readLine();
+        String patronymic = sub_task.scanner.nextLine().trim();
         if (surname.isEmpty()) surname = null;
         if (firstName.isEmpty()) firstName = null;
         if (patronymic.isEmpty()) patronymic = null;
