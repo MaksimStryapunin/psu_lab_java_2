@@ -41,15 +41,33 @@ public class Main {
             case 1: {
                 String z2 = valid.readLine("Задача:\n", taskNumbers);
                 switch (z2) {
-                    case "3": {task13.show_task(); break;}
-                    case "2": {task12.show_task(); break;}
+                    case "3": {
+                        task13.show_task();
+                        break;
+                    }
+                    case "2": {
+                        task12.show_task();
+                        break;
+                    }
                 }
                 break;
             }
-            case 2: {task24.show_task(); break;}
-            case 3: {task34.show_task(); break;}
-            case 4: {task45.show_task(); break;}
-            case 5: {task51.show_task(); break;}
+            case 2: {
+                task24.show_task();
+                break;
+            }
+            case 3: {
+                task34.show_task();
+                break;
+            }
+            case 4: {
+                task45.show_task();
+                break;
+            }
+            case 5: {
+                task51.show_task();
+                break;
+            }
         }
     }
 
@@ -66,29 +84,43 @@ public class Main {
         while (i < taskList.size()) {
             sub_task currentTask = taskList.get(i);
             System.out.println("\n============= Задача " + (i + 1) + " =============");
-            int menu = valid.readInt("");
             currentTask.show_task();
-
-            System.out.println("\n'r'-restart\n'q' - выход\n'Enter' - далее");
-            String input = valid.readLine().toLowerCase();
-            if (isAdd(input)) {
-                currentTask.add_new();
+            final String[] pre = {"", "q", "quit", "exit", "в", "выход",
+                    "r", "restart", "заново", "повтор", "repeat", "again",
+                    "a", "add", "добавить"
+            };
+            boolean restart = false;
+            boolean quit = false;
+            while (true) {
+                System.out.println("\n'r'-restart\n'q' - выход\n'Enter' - далее\nadd - Добавить элемент");
+                String input = valid.readLine(pre).toLowerCase();
+                if (input.isEmpty()) break;
+                if (isAdd(input)) {
+                    currentTask.add_new();
+                    continue;
+                }
+                if (isQuit(input)) {
+                    quit = true;
+                    break;
+                }
+                if (isRestart(input)) {
+                    restart = true;
+                    break;
+                }
             }
-            if (isQuit(input)) {
-                return;
-            }
-            if (isRestart(input)) {
-                continue;
-            }
-            i++;
+            if (quit) return;
+            if (!restart) i++;
         }
     }
+
     private static boolean isRestart(String input) {
         return input.equals("r") || input.equals("restart") || input.equals("заново") || input.equals("повтор") || input.equals("repeat") || input.equals("again");
     }
+
     private static boolean isAdd(String input) {
         return input.equals("a") || input.equals("add");
     }
+
     private static boolean isQuit(String input) {
         return input.equals("q") || input.equals("quit") || input.equals("выход");
     }
