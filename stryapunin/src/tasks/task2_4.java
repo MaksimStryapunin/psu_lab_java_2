@@ -5,7 +5,7 @@ import java.util.List;
 
 public class task2_4 implements sub_task {
 
-    private final Department it = new Department("IT");
+    private final List<Department> departments = new ArrayList<>();
 
     public class Department {
         private String title;
@@ -17,11 +17,6 @@ public class task2_4 implements sub_task {
         public Employee getHead() { return head; }
         public void setHead(Employee head) { this.head = head; }
         public List<Employee> getEmployees() { return employees; }
-
-        @Override
-        public String toString() {
-            return "Отдел " + title + (head != null ? ", начальник: " + head.getName() : "");
-        }
     }
 
     public class Employee {
@@ -41,46 +36,77 @@ public class task2_4 implements sub_task {
             if (department.getHead() == this) {
                 return name + " начальник отдела " + department.getTitle();
             }
-            String headName = department.getHead() != null
-                    ? department.getHead().getName()
-                    : "нет";
+            String headName = "";
+            if (department.getHead() != null) {
+                headName = department.getHead().getName();
+            }
             return name + " работает в отделе " + department.getTitle() +
                     ", начальник которого " + headName;
         }
     }
 
-    public Department getIt() { return it; }
-
     protected void printList() {
-        for (Employee e : getIt().getEmployees()) {
-            System.out.println(" - " + e);
+        for (Department d : departments) {
+            for (Employee e : d.getEmployees()) {
+                System.out.println(e);
+            }
         }
     }
 
     @Override
     public void show_task() {
-        getIt().getEmployees().clear();
-        getIt().setHead(null);
-
-        getIt().getEmployees().add(new Employee("Петров",  getIt()));
-        Employee kozlov = new Employee("Козлов", getIt());
-        getIt().getEmployees().add(kozlov);
-        getIt().getEmployees().add(new Employee("Сидоров", getIt()));
-        getIt().setHead(kozlov);
-
+        departments.clear();
+        Department it = new Department("IT");
+        departments.add(it);
+        Employee petrov  = new Employee("Петров",  it);
+        Employee kozlov  = new Employee("Козлов",  it);
+        Employee sidorov = new Employee("Сидоров", it);
+        it.getEmployees().add(petrov);
+        it.getEmployees().add(kozlov);
+        it.getEmployees().add(sidorov);
+        it.setHead(kozlov);
         printList();
     }
 
     @Override
     public void add_new() {
-        System.out.print("Имя нового сотрудника: ");
-        String name = sub_task.scanner.nextLine().trim();
-        if (name.isEmpty()) {
-            System.out.println("Отмена: имя не введено.");
-            return;
+        System.out.print("Имя сотрудника: ");
+        String name = sub_task.valid.readLine();
+        System.out.print("Название отдела: ");
+        String deptTitle = sub_task.valid.readLine();
+        System.out.print("Этот сотрудник — начальник отдела? (y/n): ");
+        String[] pre = {"y", "n"};
+        String inputHead = sub_task.valid.readLine(pre).toLowerCase();
+        boolean isHead = inputHead.equals("y");
+        Department department = null;
+        for (Department i : departments) {
+            if (i.getTitle().equalsIgnoreCase(deptTitle)) {
+                department = i;
+                break;
+            }
         }
-        Employee temp_employee = new Employee(name, getIt());
-        getIt().getEmployees().add(temp_employee);
+        if (department == null) {
+            department = new Department(deptTitle);
+            departments.add(department);
+        }
+        Employee existing = null;
+        for (Employee j : department.getEmployees()) {
+            if (j.getName().equalsIgnoreCase(name)) {
+                existing = j;
+                break;
+            }
+        }
+        if (existing != null) {
+            department.getEmployees().remove(existing);
+            if (department.getHead() == existing) {
+                department.setHead(null);
+            }
+        }
+        Employee employee = new Employee(name, department);
+        department.getEmployees().add(employee);
+        if (isHead)
+            department.setHead(employee);
+        System.out.println();
         printList();
     }
 }
@@ -88,7 +114,7 @@ public class task2_4 implements sub_task {
 //отделом, в котором сотрудник работает, причем у каждого отдела есть название и начальник, который
 //также является Сотрудником. Сотрудник может быть приведен к текстовой форме вида: “Имя работает в
 //отделе Название, начальник которого Имя”. В случае если сотрудник является руководителем отдела, то
-// текстовая форма должна быть “Имя начальник отдела Название”. Необходимо выполнить следующие задачи:
+//текстовая форма должна быть “Имя начальник отдела Название”. Необходимо выполнить следующие задачи:
 //Создать Сотрудников Петрова, Козлова, Сидорова работающих в отделе IT.
 //Сделать Козлова начальником IT отдела.
 //Вывести на экран текстовое представление всех трех Сотрудников (у всех троих должен оказаться
