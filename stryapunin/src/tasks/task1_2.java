@@ -8,20 +8,20 @@ public class task1_2 implements sub_task {
     private final List<Person> persons = new ArrayList<>();
 
     public class Person {
-        private String name;
+        private String Name;
         private int height;
 
-        public Person(String name, int height) {
-            this.name = name;
+        public Person(String Name, int height) {
+            this.Name = Name;
             this.height = height;
         }
 
-        public String getName() { return name; }
+        public String getName() { return Name; }
         public int getHeight() { return height; }
 
         @Override
         public String toString() {
-            return name + ", рост: " + height;
+            return "* Человек с именем " + Name + " и ростом " + height;
         }
     }
 
@@ -29,7 +29,7 @@ public class task1_2 implements sub_task {
 
     private void printList() {
         for (Person p : persons) {
-            System.out.println(" - " + p);
+            System.out.println(p);
         }
     }
 
@@ -45,17 +45,10 @@ public class task1_2 implements sub_task {
     @Override
     public void add_new() {
         System.out.print("Имя: ");
-        String name = sub_task.scanner.nextLine().trim();
+        String Name = sub_task.valid.readLine();
         System.out.print("Рост: ");
-        String hStr = sub_task.scanner.nextLine().trim();
-        int height;
-        try {
-            height = Integer.parseInt(hStr);
-        } catch (NumberFormatException e) {
-            System.out.println("Некорректный рост — отмена.");
-            return;
-        }
-        Person temp_person = new Person(name, height);
+        int height = sub_task.valid.readInt(0, 1000);
+        Person temp_person = new Person(Name, height);
         getPersons().add(temp_person);
         printList();
     }
