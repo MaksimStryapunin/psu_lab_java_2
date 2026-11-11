@@ -8,41 +8,41 @@ public class task1_3 implements sub_task {
     private final List<Name> names = new ArrayList<>();
 
     public static class Name {
-        private String surname;
+        private String secondName;
         private String firstName;
-        private String patronymic;
+        private String fatherName;
 
-        public Name(String surname, String firstName, String patronymic) {
-            this.surname = surname;
+        public Name(String secondName, String firstName, String fatherName) {
+            this.secondName = secondName;
             this.firstName = firstName;
-            this.patronymic = patronymic;
+            this.fatherName = fatherName;
         }
 
-        public Name(String firstName, String surname) {
-            this(surname, firstName, null);
+        public Name(String firstName, String secondName) {
+            this(secondName, firstName, null);
         }
 
         public Name(String firstName) {
             this(null, firstName, null);
         }
 
-        public String getSurname() { return surname; }
+        public String getsecondName() { return secondName; }
         public String getFirstName() { return firstName; }
-        public String getPatronymic() { return patronymic; }
-        public void setSurname(String surname) { this.surname = surname; }
+        public String getfatherName() { return fatherName; }
+        public void setsecondName(String secondName) { this.secondName = secondName; }
         public void setFirstName(String firstName) { this.firstName = firstName; }
-        public void setPatronymic(String patronymic) { this.patronymic = patronymic; }
+        public void setfatherName(String fatherName) { this.fatherName = fatherName; }
 
         @Override
         public String toString() {
-            StringBuilder sb = new StringBuilder();
-            if (surname != null && !surname.isEmpty()) sb.append(surname).append(" ");
-            if (firstName != null && !firstName.isEmpty()) sb.append(firstName);
-            if (patronymic != null && !patronymic.isEmpty()) {
-                if (sb.length() > 0) sb.append(" ");
-                sb.append(patronymic);
+            StringBuilder temp = new StringBuilder();
+            if (secondName != null && !secondName.isEmpty()) temp.append(secondName).append(" ");
+            if (firstName != null && !firstName.isEmpty()) temp.append(firstName);
+            if (fatherName != null && !fatherName.isEmpty()) {
+                if (temp.length() > 0) temp.append(" ");
+                temp.append(fatherName);
             }
-            return sb.toString().trim();
+            return temp.toString().trim();
         }
     }
 
@@ -50,7 +50,7 @@ public class task1_3 implements sub_task {
 
     private void printList() {
         for (Name n : names) {
-            System.out.println(" - " + n);
+            System.out.println(n);
         }
     }
 
@@ -66,15 +66,15 @@ public class task1_3 implements sub_task {
     @Override
     public void add_new() {
         System.out.print("Фамилия: ");
-        String surname = sub_task.scanner.nextLine().trim();
+        String secondName = sub_task.scanner.nextLine().trim();
         System.out.print("Личное имя: ");
         String firstName = sub_task.scanner.nextLine().trim();
         System.out.print("Отчество: ");
-        String patronymic = sub_task.scanner.nextLine().trim();
-        if (surname.isEmpty()) surname = null;
+        String fatherName = sub_task.scanner.nextLine().trim();
+        if (secondName.isEmpty()) secondName = null;
         if (firstName.isEmpty()) firstName = null;
-        if (patronymic.isEmpty()) patronymic = null;
-        Name temp_name = new Name(surname, firstName, patronymic);
+        if (fatherName.isEmpty()) fatherName = null;
+        Name temp_name = new Name(secondName, firstName, fatherName);
         getNames().add(temp_name);
         printList();
     }
