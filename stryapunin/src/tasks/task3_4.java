@@ -1,23 +1,38 @@
 package tasks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class task3_4 extends task2_4 {
 
+    List<Department> departments = super.getDepartments();
+
+    @Override
+    protected void printList() {
+        String input = sub_task.valid.readLine("Ссылка");
+        System.out.println("-------------------------------");
+        Employee found = null;
+        for (Department i : departments) {
+            for (Employee j : i.getEmployees()) {
+                if (j.getName().equalsIgnoreCase(input)) {
+                    found = j;
+                    break;
+                }
+            }
+            if (found != null) break;
+        }
+        if (found == null) {
+            System.err.println("Некорректная ссылка!");
+            return;
+        }
+        Department dept = found.getDepartment();
+        for (Employee k : dept.getEmployees()) {
+            System.out.println(k.getName());
+        }
+    }
     @Override
     public void show_task() {
-        getIt().getEmployees().clear();
-        getIt().setHead(null);
-
-        getIt().getEmployees().add(new Employee("Петров",  getIt()));
-        Employee kozlov = new Employee("Козлов", getIt());
-        getIt().getEmployees().add(kozlov);
-        getIt().getEmployees().add(new Employee("Сидоров", getIt()));
-        getIt().setHead(kozlov);
-
-        Employee any = getIt().getEmployees().get(0);
-        for (Employee e : any.getDepartment().getEmployees()) {
-            System.out.println(" - " + e.getName() +
-                    (e == getIt().getHead() ? " (начальник)" : ""));
-        }
+        super.show_task();
     }
 }
 //Сотрудники и отделы. Измените решение, полученное в задаче 2.4 таким образом,

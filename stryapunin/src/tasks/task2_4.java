@@ -71,10 +71,10 @@ public class task2_4 implements sub_task {
 
     @Override
     public void add_new() {
-        String name = sub_task.valid.readLine("Имя сотрудника: ");
-        String deptTitle = sub_task.valid.readLine("Название отдела: ");
+        String name = sub_task.valid.readLine("Имя сотрудника");
+        String deptTitle = sub_task.valid.readLine("Название отдела");
         String[] pre = {"y", "n"};
-        String inputHead = sub_task.valid.readLine("Этот сотрудник — начальник отдела? (y/n): ", pre).toLowerCase();
+        String inputHead = sub_task.valid.readLine("Этот сотрудник — начальник отдела? (y/n)", pre).toLowerCase();
         boolean isHead = inputHead.equals("y");
         Department department = null;
         for (Department i : departments) {
