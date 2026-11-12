@@ -96,7 +96,7 @@ public class Main {
             boolean restart = false;
             boolean quit = false;
             while (true) {
-                System.out.println("\n'r'-restart\n'q' - выход\n'Enter' - далее\nadd - Добавить элемент");
+                System.out.println("\n'r'-restart\n'q' - выход\n'Enter' - далее\n'add' - Добавить элемент");
                 String input = sub_task.scanner.nextLine().trim().toLowerCase();
                 if (input.isEmpty()) break;
                 if (isAdd(input)) {
