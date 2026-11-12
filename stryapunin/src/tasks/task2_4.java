@@ -5,7 +5,7 @@ import java.util.List;
 
 public class task2_4 implements sub_task {
 
-    private final List<Department> departments = new ArrayList<>();
+    private final List<Department> departments = new ArrayList<Department>();
 
     public class Department {
         private String title;
@@ -44,14 +44,15 @@ public class task2_4 implements sub_task {
                     ", начальник которого " + headName;
         }
     }
-
     protected void printList() {
-        for (Department d : departments) {
-            for (Employee e : d.getEmployees()) {
-                System.out.println(e);
+        for (Department i : departments) {
+            for (Employee j : i.getEmployees()) {
+                System.out.println(j);
             }
         }
     }
+
+    public List<Department> getDepartments() { return departments; }
 
     @Override
     public void show_task() {
@@ -70,13 +71,10 @@ public class task2_4 implements sub_task {
 
     @Override
     public void add_new() {
-        System.out.print("Имя сотрудника: ");
-        String name = sub_task.valid.readLine();
-        System.out.print("Название отдела: ");
-        String deptTitle = sub_task.valid.readLine();
-        System.out.print("Этот сотрудник — начальник отдела? (y/n): ");
+        String name = sub_task.valid.readLine("Имя сотрудника: ");
+        String deptTitle = sub_task.valid.readLine("Название отдела: ");
         String[] pre = {"y", "n"};
-        String inputHead = sub_task.valid.readLine(pre).toLowerCase();
+        String inputHead = sub_task.valid.readLine("Этот сотрудник — начальник отдела? (y/n): ", pre).toLowerCase();
         boolean isHead = inputHead.equals("y");
         Department department = null;
         for (Department i : departments) {

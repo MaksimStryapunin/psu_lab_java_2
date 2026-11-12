@@ -44,10 +44,8 @@ public class task1_2 implements sub_task {
 
     @Override
     public void add_new() {
-        System.out.print("Имя: ");
-        String Name = sub_task.valid.readLine();
-        System.out.print("Рост: ");
-        int height = sub_task.valid.readInt(0, 1000);
+        String Name = sub_task.valid.readLine("Имя: ");
+        int height = sub_task.valid.readInt("Рост: ",0, 1000);
         Person temp_person = new Person(Name, height);
         getPersons().add(temp_person);
         printList();
