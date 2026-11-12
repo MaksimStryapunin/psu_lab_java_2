@@ -90,8 +90,8 @@ public class Main {
         int i = 0;
         while (i < taskList.size()) {
             sub_task currentTask = taskList.get(i);
-            System.out.println("\n============= Задание " + arr_task1.get(i) + " =============");
-            System.out.println("\n============= Задача " + arr_task.get(i) + " ==============");
+            System.out.println("\n================ Задание " + arr_task1.get(i) + " ================");
+            System.out.println("\n================ Задача " + arr_task.get(i) + " =================");
             currentTask.show_task();
             boolean restart = false;
             boolean quit = false;
