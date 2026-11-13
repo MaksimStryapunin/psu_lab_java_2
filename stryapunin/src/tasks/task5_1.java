@@ -4,15 +4,12 @@ public class task5_1 implements sub_task {
 
     private Pistol pistol;
 
-    public class Pistol {
+    public static class Pistol {
         private int bullets;
 
         public Pistol() { this(5); }
 
         public Pistol(int bullets) {
-            if (bullets < 0) {
-                throw new IllegalArgumentException("Количество патронов не может быть отрицательным");
-            }
             this.bullets = bullets;
         }
 
@@ -30,7 +27,7 @@ public class task5_1 implements sub_task {
 
         @Override
         public String toString() {
-            return "Пистолет [патронов: " + bullets + "]";
+            return "В пистолете " + bullets + " патронов";
         }
     }
 
@@ -42,25 +39,40 @@ public class task5_1 implements sub_task {
         for (int k = 0; k < 5; k++) {
             pistol.shoot();
         }
+        pistol = null;
     }
 
     @Override
     public void add_new() {
-        if (getPistol() == null) {
-            System.out.println("Пистолет ещё не создан — сначала запустите задачу.");
+        if (pistol != null) return;
+        System.out.print("Кол-во патронов: ");
+        String bullets = sub_task.scanner.nextLine().trim();
+        if (bullets.isEmpty()) {
+            this.pistol = new Pistol();
             return;
         }
-        System.out.print("Сколько патронов добавить: ");
-        String s = sub_task.scanner.nextLine().trim();
-        int delta;
+        int intBullets;
         try {
-            delta = Integer.parseInt(s);
+            intBullets = Integer.parseInt(bullets);
         } catch (NumberFormatException e) {
-            System.out.println("Некорректное число — отмена.");
+            System.err.println("Некорректное число!");
             return;
         }
-        getPistol().setBullets(getPistol().getBullets() + delta);
-        System.out.println("Патронов теперь: " + getPistol().getBullets());
+        if (intBullets < 0) {
+            System.err.println("Патронов не может быть меньше нуля!");
+            return;
+        }
+        pistol = new Pistol(intBullets);
+        System.out.println("Enter — выстрел. 'q'/'quit'/'exit' — закончить.");
+
+        while (true) {
+            String input = sub_task.scanner.nextLine().trim().toLowerCase();
+            if (input.equals("q") || input.equals("quit") || input.equals("exit")) {
+                pistol = null;
+                return;
+            }
+            pistol.shoot();
+        }
     }
 }
 //Пистолет стреляет. • Создайте сущность Пистолет, которая описывается следующим образом:

@@ -67,13 +67,17 @@ public class task1_3 implements sub_task {
     public void add_new() {
         System.out.print("Фамилия: ");
         String secondName = sub_task.scanner.nextLine().trim();
-        System.out.print("Личное имя: ");
+        System.out.print("Имя: ");
         String firstName = sub_task.scanner.nextLine().trim();
         System.out.print("Отчество: ");
         String fatherName = sub_task.scanner.nextLine().trim();
         if (secondName.isEmpty()) secondName = null;
         if (firstName.isEmpty()) firstName = null;
         if (fatherName.isEmpty()) fatherName = null;
+        if (secondName == null && firstName == null && fatherName == null) {
+            System.err.println("Все поля пустые");
+            return;
+        }
         Name temp_name = new Name(secondName, firstName, fatherName);
         getNames().add(temp_name);
         printList();

@@ -1,6 +1,5 @@
 package tasks;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class task3_4 extends task2_4 {

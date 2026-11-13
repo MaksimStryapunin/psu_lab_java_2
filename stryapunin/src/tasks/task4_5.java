@@ -1,16 +1,13 @@
 package tasks;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class task4_5 extends task1_3 {
 
-    private final List<task1_3.Name> names = new ArrayList<>();
+    List<task1_3.Name> names = super.getNames();
 
-    public List<task1_3.Name> getNames() { return names; }
-
-    private void printList() {
-        for (task1_3.Name n : names) {
+    private void printList(){
+        for (Name n : names) {
             System.out.println(n);
         }
     }
@@ -18,24 +15,31 @@ public class task4_5 extends task1_3 {
     @Override
     public void show_task() {
         names.clear();
-        names.add(new task1_3.Name("Клеопатра"));
-        names.add(new task1_3.Name("Пушкин", "Александр", "Сергеевич"));
-        names.add(new task1_3.Name("Владимир", "Маяковский"));
-        names.add(new task1_3.Name("Христофор", "Бонифатьевич"));
+        names.add(new Name("Клеопатра"));
+        names.add(new Name("Пушкин", "Александр", "Сергеевич"));
+        names.add(new Name("Владимир", "Маяковский"));
+        names.add(new Name("Христофор", "Бонифатьевич"));
         printList();
     }
-
     @Override
     public void add_new() {
-        System.out.print("Личное имя: ");
-        String firstName = sub_task.scanner.nextLine().trim();
-        System.out.print("Фамилия (Enter — пропустить): ");
-        String surname = sub_task.scanner.nextLine().trim();
-
-        task1_3.Name temp_name = surname.isEmpty()
-                ? new task1_3.Name(firstName)
-                : new task1_3.Name(firstName, surname);
-
+        String firstName = sub_task.valid.readLine("Имя");
+        System.out.print("Фамилия: ");
+        String secondName = sub_task.scanner.nextLine().trim();
+        if (secondName.isEmpty()) {
+            Name temp_name = new Name(firstName);
+            getNames().add(temp_name);
+            printList();
+            return;
+        }
+        System.out.print("Отчество: ");
+        String fatherName = sub_task.scanner.nextLine().trim();
+        Name temp_name;
+        if (fatherName.isEmpty()) {
+            temp_name = new Name(firstName, secondName);
+        } else {
+            temp_name = new Name(secondName, firstName, fatherName);
+        }
         getNames().add(temp_name);
         printList();
     }
