@@ -4,10 +4,9 @@ import sup.*;
 import java.util.*;
 
 public interface sub_task {
-    filling  fill = new filling();
     Scanner scanner = new Scanner(System.in);
     inputvalidator valid = new inputvalidator(scanner);
 
-    public default void show_task(){}
-    public default void add_new(){}
+    default void show_task(){}
+    default void add_new(){}
 }

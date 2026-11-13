@@ -26,12 +26,12 @@ public class task1_3 implements sub_task {
             this(null, firstName, null);
         }
 
-        public String getsecondName() { return secondName; }
+        public String getSecondName() { return secondName; }
         public String getFirstName() { return firstName; }
-        public String getfatherName() { return fatherName; }
-        public void setsecondName(String secondName) { this.secondName = secondName; }
+        public String getFatherName() { return fatherName; }
+        public void setSecondName(String secondName) { this.secondName = secondName; }
         public void setFirstName(String firstName) { this.firstName = firstName; }
-        public void setfatherName(String fatherName) { this.fatherName = fatherName; }
+        public void setFatherName(String fatherName) { this.fatherName = fatherName; }
 
         @Override
         public String toString() {
@@ -39,7 +39,7 @@ public class task1_3 implements sub_task {
             if (secondName != null && !secondName.isEmpty()) temp.append(secondName).append(" ");
             if (firstName != null && !firstName.isEmpty()) temp.append(firstName);
             if (fatherName != null && !fatherName.isEmpty()) {
-                if (temp.length() > 0) temp.append(" ");
+                if (!temp.isEmpty()) temp.append(" ");
                 temp.append(fatherName);
             }
             return temp.toString().trim();

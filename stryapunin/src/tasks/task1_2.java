@@ -7,9 +7,9 @@ public class task1_2 implements sub_task {
 
     private final List<Person> persons = new ArrayList<>();
 
-    public class Person {
-        private String Name;
-        private int height;
+    public static class Person {
+        private final String Name;
+        private final int height;
 
         public Person(String Name, int height) {
             this.Name = Name;

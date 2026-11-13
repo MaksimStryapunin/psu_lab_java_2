@@ -3,7 +3,7 @@ package tasks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class task4_5 implements sub_task {
+public class task4_5 extends task1_3 {
 
     private final List<task1_3.Name> names = new ArrayList<>();
 
@@ -11,7 +11,7 @@ public class task4_5 implements sub_task {
 
     private void printList() {
         for (task1_3.Name n : names) {
-            System.out.println(" - " + n);
+            System.out.println(n);
         }
     }
 

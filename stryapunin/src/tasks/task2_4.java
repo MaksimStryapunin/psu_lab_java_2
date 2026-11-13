@@ -5,10 +5,10 @@ import java.util.List;
 
 public class task2_4 implements sub_task {
 
-    private final List<Department> departments = new ArrayList<Department>();
+    private final List<Department> departments = new ArrayList<>();
 
     public class Department {
-        private String title;
+        private final String title;
         private Employee head;
         private final List<Employee> employees = new ArrayList<>();
 
